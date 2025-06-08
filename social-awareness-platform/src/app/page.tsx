@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react'
 import SocialIssueCard from '../components/SocialIssueCard'
 import NotificationPortal from '../components/NotificationPortal'

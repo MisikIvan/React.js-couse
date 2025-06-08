@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Платформа соціальної обізнаності
 
-## Getting Started
+Веб-ресурс для підвищення обізнаності та освіти щодо соціальних питань, створений з використанням Next.js 15, TypeScript та Tailwind CSS.
 
-First, run the development server:
+## 🚀 Технології
+
+- **Next.js 15** - React фреймворк з App Router
+- **TypeScript** - типізація для кращої розробки
+- **Tailwind CSS** - утилітарний CSS фреймворк
+- **React Hook Form** - керування формами
+- **Zod** - валідація схем
+
+## 📦 Встановлення
 
 ```bash
+# Клонування репозиторію
+git clone <repository-url>
+cd social-awareness-platform
+
+# Встановлення залежностей
+npm install
+
+# Запуск в режимі розробки
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Відкрийте [http://localhost:3000](http://localhost:3000) у браузері.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Структура проекту
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── articles/          # Сторінка статей
+│   ├── contact/           # Сторінка контактів
+│   ├── globals.css        # Глобальні стилі
+│   ├── layout.tsx         # Корневий layout
+│   └── page.tsx           # Головна сторінка
+├── components/            # React компоненти
+│   ├── SocialIssueCard.tsx    # Картка соціального питання
+│   ├── QuizComponent.tsx      # Компонент квізу
+│   ├── NotificationPortal.tsx # Портал нотифікацій
+│   ├── Navigation.tsx         # Навігація
+│   └── Footer.tsx            # Підвал сайту
+└── hooks/                # Кастомні хуки
+    └── useLocalStorage.ts # Хук для роботи з localStorage
+```
 
-## Learn More
+## 🎯 Основні функції
 
-To learn more about Next.js, take a look at the following resources:
+### Компоненти з вкладеністю
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **SocialIssueCard** - базовий компонент для відображення соціальних питань
+- **QuizComponent** - використовує SocialIssueCard, реалізує логіку квізів
+- **NotificationPortal** - використовує QuizComponent, створює портал для нотифікацій
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Функціональність
 
-## Deploy on Vercel
+- 📱 Адаптивний дизайн
+- 🎲 Інтерактивні квізи з збереженням результатів
+- 📚 Каталог освітніх статей з пошуком та фільтрацією
+- 📧 Форма зворотного зв'язку з валідацією
+- 💾 Збереження даних у localStorage
+- 🔍 Відстеження переглядів за допомогою Intersection Observer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 Сторінки
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **/** - Головна сторінка з оглядом платформи
+- **/articles** - Каталог освітніх матеріалів
+- **/contact** - Форма зворотного зв'язку
+
+## 🛠️ Скрипти
+
+```bash
+npm run dev          # Запуск сервера розробки
+npm run build        # Збірка для продакшену
+npm run start        # Запуск продакшен сервера
+npm run lint         # Перевірка коду ESLint
+```
+
+## 📝 Особливості реалізації
+
+### Хуки React
+
+- `useState` - керування локальним станом
+- `useEffect` - побічні ефекти та життєвий цикл
+- `useRef` - прямий доступ до DOM елементів
+- `useLocalStorage` - кастомний хук для роботи з localStorage
+
+### Умовний рендеринг
+
+- Відображення різних станів завантаження
+- Показ/приховування елементів залежно від стану
+- Динамічна зміна контенту
+
+### Валідація форм
+
+- Використання Zod для схеми валідації
+- React Hook Form для керування формами
+- Відображення помилок валідації
+
+## 🎨 Дизайн
+
+Проект використовує сучасний мінімалістичний дизайн з:
+
+- Синьо-сірою колірною палітрою
+- Чистою типографікою
+- Плавними анімаціями та переходами
+- Інтуїтивним UX
+
+## 🤝 Внесок
+
+Цей проект створено як лабораторна робота для вивчення React.js та сучасних веб-технологій.
+
+## 📄 Ліцензія
+
+MIT License
