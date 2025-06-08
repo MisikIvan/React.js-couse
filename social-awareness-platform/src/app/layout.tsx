@@ -1,5 +1,7 @@
+import React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
+import Navigation from "../components/Navigation";
 
 export const metadata: Metadata = {
   title: "Платформа соціальної обізнаності",
@@ -15,6 +17,7 @@ export default function RootLayout({
     <html lang="uk">
       <body className="min-h-screen bg-gray-50">
         <div className="flex flex-col min-h-screen">
+          <Navigation />
           {children}
         </div>
       </body>

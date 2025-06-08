@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 interface SocialIssueCardProps {
   title: string
@@ -19,6 +19,29 @@ export default function SocialIssueCard({
 }: SocialIssueCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
   const [bookmarked, setBookmarked] = useState(false)
+  const [viewCount, setViewCount] = useState(0)
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setViewCount(prev => prev + 1)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current)
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current)
+      }
+    }
+  }, [])
 
   const getSeverityColor = () => {
     switch (severity) {
@@ -34,7 +57,7 @@ export default function SocialIssueCard({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 transition-shadow hover:shadow-lg">
+    <div ref={cardRef} className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 transition-shadow hover:shadow-lg">
       {imageUrl && (
         <div className="h-48 bg-gray-200 bg-cover bg-center" style={{ backgroundImage: `url(${imageUrl})` }}>
           <div className="h-full bg-black bg-opacity-20"></div>
@@ -78,7 +101,8 @@ export default function SocialIssueCard({
             Дізнатись більше
           </button>
           
-          <div className="flex space-x-2">
+          <div className="flex space-x-2 items-center">
+            <span className="text-xs text-gray-500">Переглядів: {viewCount}</span>
             <button className="text-gray-500 hover:text-gray-700 transition-colors">
               Поділитись
             </button>

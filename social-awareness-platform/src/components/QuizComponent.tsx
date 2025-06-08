@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import SocialIssueCard from './SocialIssueCard'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 interface QuizQuestion {
   id: string
@@ -30,6 +31,7 @@ export default function QuizComponent({
   const [score, setScore] = useState(0)
   const [quizCompleted, setQuizCompleted] = useState(false)
   const [userAnswers, setUserAnswers] = useState<number[]>([])
+  const [quizHistory, setQuizHistory] = useLocalStorage<Array<{score: number, total: number, date: string}>>('quiz-history', [])
 
   const currentQuizQuestion = questions[currentQuestion]
 
@@ -51,8 +53,17 @@ export default function QuizComponent({
       setCurrentQuestion(currentQuestion + 1)
       setSelectedAnswer(null)
     } else {
+      const finalScore = selectedAnswer === currentQuizQuestion.correctAnswer ? score + 1 : score
       setQuizCompleted(true)
-      onQuizComplete(selectedAnswer === currentQuizQuestion.correctAnswer ? score + 1 : score, questions.length)
+      
+      const newResult = {
+        score: finalScore,
+        total: questions.length,
+        date: new Date().toLocaleDateString('uk-UA')
+      }
+      setQuizHistory(prev => [...prev, newResult])
+      
+      onQuizComplete(finalScore, questions.length)
     }
   }
 
@@ -91,7 +102,7 @@ export default function QuizComponent({
             <span className="text-lg font-semibold">Ваш результат: {percentage}%</span>
           </div>
           
-          <div className="flex justify-center space-x-4">
+          <div className="flex justify-center space-x-4 mb-6">
             <button
               onClick={resetQuiz}
               className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
@@ -99,6 +110,20 @@ export default function QuizComponent({
               Пройти знову
             </button>
           </div>
+
+          {quizHistory.length > 1 && (
+            <div className="bg-gray-50 rounded-lg p-4">
+              <h4 className="font-semibold text-gray-800 mb-2">Ваші попередні результати:</h4>
+              <div className="space-y-1">
+                {quizHistory.slice(-3).map((result, index) => (
+                  <div key={index} className="text-sm text-gray-600 flex justify-between">
+                    <span>{result.date}</span>
+                    <span>{result.score}/{result.total} ({Math.round((result.score/result.total)*100)}%)</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {showRelatedIssues && (
