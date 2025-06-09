@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uk">
-      <body className="min-h-screen bg-gray-50">
+      <body className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
         <div className="flex flex-col min-h-screen">
           <Navigation />
           {children}

@@ -2,9 +2,11 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { useTheme } from '../hooks/useTheme'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { theme, toggleTheme } = useTheme()
 
   const navigationItems = [
     { href: '/', label: 'Головна' },
@@ -13,23 +15,30 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-30">
+    <nav className="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-30 transition-colors">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          <Link href="/" className="text-xl font-bold text-blue-600 hover:text-blue-700 transition-colors">
+          <Link href="/" className="text-xl font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors">
             Соціальна платформа
           </Link>
 
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex space-x-6 items-center">
             {navigationItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                className="text-gray-700 hover:text-blue-600 transition-colors font-medium dark:text-gray-300 dark:hover:text-blue-400"
               >
                 {item.label}
               </Link>
             ))}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-md text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+              title={`Перемкнути на ${theme === 'light' ? 'темну' : 'світлу'} тему`}
+            >
+              {theme === 'light' ? '🌙' : '☀️'}
+            </button>
           </div>
 
           <button

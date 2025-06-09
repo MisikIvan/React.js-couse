@@ -92,37 +92,37 @@ export default function QuizComponent({
     
     return (
       <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-lg shadow-md p-6 text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Квіз завершено!</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center mb-6 transition-colors">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">Квіз завершено!</h2>
           <div className="mb-4">
-            <span className="text-3xl font-bold text-blue-600">{score}</span>
-            <span className="text-gray-600"> з {questions.length}</span>
+            <span className="text-3xl font-bold text-blue-600 dark:text-blue-400">{score}</span>
+            <span className="text-gray-600 dark:text-gray-300"> з {questions.length}</span>
           </div>
           <div className="mb-4">
-            <span className="text-lg font-semibold">Ваш результат: {percentage}%</span>
+            <span className="text-lg font-semibold text-gray-800 dark:text-gray-100">Ваш результат: {percentage}%</span>
           </div>
           
           <div className="flex justify-center space-x-4 mb-6">
             <button
               onClick={resetQuiz}
-              className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              className="bg-blue-600 dark:bg-blue-700 text-white px-6 py-2 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
             >
               Пройти знову
             </button>
           </div>
 
           {quizHistory.length > 1 && (
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="font-semibold text-gray-800 mb-2">Ваші попередні результати:</h4>
-              <div className="space-y-1">
-                {quizHistory.slice(-3).map((result, index) => (
-                  <div key={index} className="text-sm text-gray-600 flex justify-between">
-                    <span>{result.date}</span>
-                    <span>{result.score}/{result.total} ({Math.round((result.score/result.total)*100)}%)</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+                         <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 transition-colors">
+               <h4 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">Ваші попередні результати:</h4>
+               <div className="space-y-1">
+                 {quizHistory.slice(-3).map((result, index) => (
+                   <div key={index} className="text-sm text-gray-600 dark:text-gray-300 flex justify-between">
+                     <span>{result.date}</span>
+                     <span>{result.score}/{result.total} ({Math.round((result.score/result.total)*100)}%)</span>
+                   </div>
+                 ))}
+               </div>
+             </div>
           )}
         </div>
 
@@ -149,13 +149,13 @@ export default function QuizComponent({
 
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors">
         <div className="mb-4">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-gray-600 dark:text-gray-300">
               Питання {currentQuestion + 1} з {questions.length}
             </span>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-gray-600 dark:text-gray-300">
               Правильних відповідей: {score}
             </span>
           </div>
@@ -167,7 +167,7 @@ export default function QuizComponent({
           </div>
         </div>
 
-        <h2 className="text-xl font-semibold text-gray-800 mb-6">
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6">
           {currentQuizQuestion.question}
         </h2>
 
@@ -178,8 +178,8 @@ export default function QuizComponent({
               onClick={() => handleAnswerSelect(index)}
               className={`w-full text-left p-4 rounded-lg border transition-colors ${
                 selectedAnswer === index
-                  ? 'border-blue-500 bg-blue-50 text-blue-800'
-                  : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                  ? 'border-blue-500 bg-blue-50 dark:bg-blue-900 text-blue-800 dark:text-blue-200'
+                  : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200'
               }`}
             >
               <span className="font-medium mr-3">{String.fromCharCode(65 + index)}.</span>
@@ -193,8 +193,8 @@ export default function QuizComponent({
           disabled={selectedAnswer === null}
           className={`w-full py-3 rounded-md font-medium transition-colors ${
             selectedAnswer !== null
-              ? 'bg-blue-600 text-white hover:bg-blue-700'
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              ? 'bg-blue-600 dark:bg-blue-700 text-white hover:bg-blue-700 dark:hover:bg-blue-600'
+              : 'bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed'
           }`}
         >
           {currentQuestion + 1 === questions.length ? 'Завершити квіз' : 'Наступне питання'}

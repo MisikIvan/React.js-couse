@@ -106,15 +106,15 @@ export default function NotificationPortal({
     
     switch (type) {
       case 'success':
-        return `${baseStyles} bg-green-50 border-green-500 text-green-800`
+        return `${baseStyles} bg-green-50 dark:bg-green-900 border-green-500 text-green-800 dark:text-green-200`
       case 'warning':
-        return `${baseStyles} bg-yellow-50 border-yellow-500 text-yellow-800`
+        return `${baseStyles} bg-yellow-50 dark:bg-yellow-900 border-yellow-500 text-yellow-800 dark:text-yellow-200`
       case 'error':
-        return `${baseStyles} bg-red-50 border-red-500 text-red-800`
+        return `${baseStyles} bg-red-50 dark:bg-red-900 border-red-500 text-red-800 dark:text-red-200`
       case 'info':
-        return `${baseStyles} bg-blue-50 border-blue-500 text-blue-800`
+        return `${baseStyles} bg-blue-50 dark:bg-blue-900 border-blue-500 text-blue-800 dark:text-blue-200`
       default:
-        return `${baseStyles} bg-gray-50 border-gray-500 text-gray-800`
+        return `${baseStyles} bg-gray-50 dark:bg-gray-800 border-gray-500 text-gray-800 dark:text-gray-200`
     }
   }
 
@@ -146,7 +146,7 @@ export default function NotificationPortal({
             </div>
             <button
               onClick={() => removeNotification(notification.id)}
-              className="ml-3 text-gray-400 hover:text-gray-600 transition-colors"
+              className="ml-3 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
               ×
             </button>
@@ -166,16 +166,16 @@ export default function NotificationPortal({
       
       {showQuiz && quizQuestions.length > 0 && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex items-center justify-center p-4">
-          <div className="bg-gray-50 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto relative transition-colors">
             <button
               onClick={onQuizToggle}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl z-10"
+              className="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-2xl z-10"
             >
               ×
             </button>
             
             <div className="p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">
                 Тест на знання соціальних питань
               </h2>
               

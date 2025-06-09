@@ -67,11 +67,11 @@ export default function Home() {
   return (
     <main className="flex-1">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
+        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">
           Платформа соціальної обізнаності
         </h1>
         <div className="text-center mb-12">
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Дізнайтеся більше про важливі соціальні питання та долучайтеся до позитивних змін у суспільстві
           </p>
         </div>
@@ -79,7 +79,7 @@ export default function Home() {
         <div className="flex justify-center mb-8">
           <button
             onClick={() => setShowQuiz(true)}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            className="bg-blue-600 dark:bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium"
           >
             Пройти тест на знання соціальних питань
           </button>
@@ -100,23 +100,23 @@ export default function Home() {
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-800">Соціальні проблеми</h2>
-            <p className="text-gray-600">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors">
+            <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">Соціальні проблеми</h2>
+            <p className="text-gray-600 dark:text-gray-300">
               Дослідіть актуальні соціальні виклики нашого часу
             </p>
           </div>
           
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-800">Освітні матеріали</h2>
-            <p className="text-gray-600">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors">
+            <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">Освітні матеріали</h2>
+            <p className="text-gray-600 dark:text-gray-300">
               Поглибте свої знання через статті та ресурси
             </p>
           </div>
           
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-800">Інтерактивні квізи</h2>
-            <p className="text-gray-600">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors">
+            <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">Інтерактивні квізи</h2>
+            <p className="text-gray-600 dark:text-gray-300">
               Перевірте свої знання за допомогою цікавих тестів
             </p>
           </div>

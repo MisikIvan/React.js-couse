@@ -19,19 +19,19 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-800 text-white mt-auto">
+    <footer className="bg-gray-800 dark:bg-gray-950 text-white mt-auto transition-colors">
       <div className="container mx-auto px-4 py-8">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-lg font-semibold mb-4">Платформа соціальної обізнаності</h3>
-            <p className="text-gray-300 text-sm leading-relaxed">
+            <h3 className="text-lg font-semibold mb-4 text-white">Платформа соціальної обізнаності</h3>
+            <p className="text-gray-300 dark:text-gray-400 text-sm leading-relaxed">
               Ми працюємо над підвищенням обізнаності щодо важливих соціальних питань 
               та сприяємо позитивним змінам у суспільстві.
             </p>
           </div>
 
           <div>
-            <h4 className="text-md font-semibold mb-4">Навігація</h4>
+            <h4 className="text-md font-semibold mb-4 text-white">Навігація</h4>
             <ul className="space-y-2">
               {footerLinks.platform.map((link) => (
                 <li key={link.href}>
@@ -47,7 +47,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-md font-semibold mb-4">Соціальні мережі</h4>
+            <h4 className="text-md font-semibold mb-4 text-white">Соціальні мережі</h4>
             <ul className="space-y-2">
               {footerLinks.social.map((link) => (
                 <li key={link.label}>
